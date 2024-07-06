@@ -3,3 +3,4 @@ export const test = (req,res)=>{
         message : 'api route is working!',
     })
 };
+// a function returning json 

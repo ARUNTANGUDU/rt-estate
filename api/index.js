@@ -2,6 +2,7 @@ import express from 'express';
 import mongoose from 'mongoose';//for database usage
 import dotenv from 'dotenv';
 import userRouter from './routes/user.route.js';
+import authRouter from './routes/auth.route.js';
 dotenv.config();
 
 mongoose.connect(process.env.MONGO).then(()=>{
@@ -12,11 +13,14 @@ mongoose.connect(process.env.MONGO).then(()=>{
 
 const app =express();
 
+app.use(express.json());
+
 app.listen(3000,()=>{
     console.log('server is running in port 3000');
 });
 
-app.use('/api/user',userRouter)
+app.use('/api/user',userRouter);
+app.use('/api/auth',authRouter);
 
 //route will be presented in route folder and then the (req,res) will be in controller folder
 
